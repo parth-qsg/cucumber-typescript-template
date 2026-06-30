@@ -1,16 +1,23 @@
 {
-  "name": "worker-manager-sample-test-repo",
+  "name": "cucumber-typescript",
   "version": "1.0.0",
   "private": true,
-  "description": "Minimal Playwright repo compatible with worker-manager script generation and execution",
+  "description": "Playwright + Cucumber BDD Automation Framework (TypeScript)",
   "scripts": {
-    "test": "playwright test --reporter=list,html",
-    "test:headed": "playwright test --headed --reporter=list,html",
-    "test:smoke": "playwright test --grep @smoke --reporter=list,html"
+    "test": "npx cucumber-js -p default --exit",
+    "test:smoke": "npx cucumber-js -p default --tags @smoke --exit",
+    "test:regression": "npx cucumber-js -p default --tags @regression --exit",
+    "test:headless": "cross-env HEADLESS=true npx cucumber-js -p default --exit",
+    "test:headed": "cross-env HEADLESS=false npx cucumber-js -p default --exit"
   },
   "devDependencies": {
+    "@cucumber/cucumber": "^11.3.0",
     "@playwright/test": "^1.58.0",
-    "dotenv": "^16.6.1",
-    "typescript": "^5.9.3"
-  }
+    "@types/node": "^20.12.7",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {}
 }
